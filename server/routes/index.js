@@ -48,11 +48,11 @@ router.get("/", (req, res, next) => {
 
 //=================Routes related to Project===================
 
-router.get("/project/all", getAllProjects);
-router.get("/project/:projectId", getProjectbyId);
-router.post("/project/create", createProject);
-router.patch("/project/:projectId", updateProject);
-router.delete("/project/:projectId", deleteProject);
+router.get("/project", catchErrors(getAllProjects));
+router.get("/project/:projectId", isAuth, catchErrors(getProjectbyId));
+router.post("/project/create", isAuth, catchErrors(createProject));
+router.patch("/project/:projectId", isAuth, catchErrors(updateProject));
+router.delete("/project/:projectId", isAuth, catchErrors(deleteProject));
 
 //=================Routes related to Risk===================
 
@@ -64,7 +64,7 @@ router.delete("/risk/:riskId", deleteRisk);
 
 //=================Routes related to Risk===================
 
-router.get("/monthperiod/all", getAllMonthPeriod);
+router.get("/monthperiod", getAllMonthPeriod);
 router.get("/monthperiod/:monthperiodId", getMonthPeriodbyId);
 router.post("/monthperiod/create", createMonthPeriod);
 router.patch("/monthperiod/:monthperiodId", updateMonthPeriod);
@@ -72,7 +72,7 @@ router.delete("/monthperiod/:monthperiodId", deleteMonthPeriod);
 
 //=================Routes related to User===================
 
-router.get("/user/all", getAllUser);
+router.get("/user", getAllUser);
 router.get("/user/:userId", getUserbyId);
 router.patch("/user/:userId", updateUser);
 router.delete("/user/:userId", deleteUser);
