@@ -96,6 +96,8 @@ exports.updateProject = async (req, res) => {
   res.status(200).json(project);
 };
 
+
+//Borrar un Proyecto
 exports.deleteProject = async (req, res) => {
   const { projectId } = req.params;
   await ProjectModel.findByIdAndRemove(projectId);
@@ -104,3 +106,12 @@ exports.deleteProject = async (req, res) => {
     message: "Project deleted succesfully",
   });
 };
+
+//Cambiar Imagen de proyecto
+exports.changeProjectImg = async (_req, res) => {
+  const {projectImg} = req.body
+
+  const project = await ProjectModel.findByIdAndUpdate(req.project._id, {$set: {projectImg}}, {new:true})
+  //const {_doc: {password, ...rest}} = user
+  res.status(200).json(project)
+}

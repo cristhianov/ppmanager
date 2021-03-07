@@ -69,10 +69,12 @@ exports.logoutProcess = (req, res) => {
 };
 
 //Cehck SessionProcces
-exports.sessionProcess = (req, res) => {
+exports.checkSession = (req, res) => {
   if (req.user) {
     const usr = clearRes(req.user.toObject());
     return res.status(200).json(usr);
   }
   res.status(200).json(null);
 };
+
+
