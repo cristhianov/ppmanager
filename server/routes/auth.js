@@ -21,6 +21,6 @@ router.get("/logout", logoutProcess);
 //Ruta para verficar que se mantiene una session
 router.get("/session", checkSession);
 
-router.post("/projectimg/change", isAuth, changeProjectImg);
+router.post("/projectimg/change", changeProjectImg);
 
 module.exports = router;

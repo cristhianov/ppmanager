@@ -49,10 +49,17 @@ router.get("/", (req, res, next) => {
 //=================Routes related to Project===================
 
 router.get("/project", catchErrors(getAllProjects));
-router.get("/project/:projectId", isAuth, catchErrors(getProjectbyId));
-router.post("/project/create", isAuth, catchErrors(createProject));
-router.patch("/project/:projectId", isAuth, catchErrors(updateProject));
-router.delete("/project/:projectId", isAuth, catchErrors(deleteProject));
+router.get("/project/:projectId", catchErrors(getProjectbyId));
+router.post("/project/create", catchErrors(createProject));
+router.patch("/project/:projectId", catchErrors(updateProject));
+router.delete("/project/:projectId", catchErrors(deleteProject));
+
+//==> Pending to enable it when problems will resolved
+// router.get("/project", catchErrors(getAllProjects));
+// router.get("/project/:projectId", isAuth, catchErrors(getProjectbyId));
+// router.post("/project/create", isAuth, catchErrors(createProject));
+// router.patch("/project/:projectId", isAuth, catchErrors(updateProject));
+// router.delete("/project/:projectId", isAuth, catchErrors(deleteProject));
 
 //=================Routes related to Risk===================
 
