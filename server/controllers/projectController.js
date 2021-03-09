@@ -30,6 +30,10 @@ exports.createProject = async (req, res) => {
     projectMilestones,
     projectViewers,
     projectViewChangers,
+    projectPlanSchedule,
+    projectRealSchedule,
+    projectScope,
+    projectPhase,
   } = req.body;
   const project = await ProjectModel.create({
     projectCode,
@@ -48,6 +52,10 @@ exports.createProject = async (req, res) => {
     projectMilestones,
     projectViewers,
     projectViewChangers,
+    projectPlanSchedule,
+    projectRealSchedule,
+    projectScope,
+    projectPhase,
   });
   res.status(201).json(project);
 };
@@ -70,6 +78,10 @@ exports.updateProject = async (req, res) => {
     projectMilestones,
     projectViewers,
     projectViewChangers,
+    projectPlanSchedule,
+    projectRealSchedule,
+    projectScope,
+    projectPhase,
   } = req.body;
 
   const project = await ProjectModel.findByIdAndUpdate(
@@ -90,12 +102,15 @@ exports.updateProject = async (req, res) => {
       projectMilestones,
       projectViewers,
       projectViewChangers,
+      projectPlanSchedule,
+      projectRealSchedule,
+      projectScope,
+      projectPhase,
     },
     { new: true }
   );
   res.status(200).json(project);
 };
-
 
 //Borrar un Proyecto
 exports.deleteProject = async (req, res) => {
@@ -109,9 +124,13 @@ exports.deleteProject = async (req, res) => {
 
 //Cambiar Imagen de proyecto
 exports.changeProjectImg = async (_req, res) => {
-  const {projectImg} = req.body
+  const { projectImg } = req.body;
 
-  const project = await ProjectModel.findByIdAndUpdate(req.project._id, {$set: {projectImg}}, {new:true})
+  const project = await ProjectModel.findByIdAndUpdate(
+    req.project._id,
+    { $set: { projectImg } },
+    { new: true }
+  );
   //const {_doc: {password, ...rest}} = user
-  res.status(200).json(project)
-}
+  res.status(200).json(project);
+};

@@ -39,6 +39,20 @@ const projectSchema = new Schema(
     projectMilestones: [String],
     projectViewers: [String],
     projectViewChangers: [String],
+    projectScope: { type: String, trim: true, required: true },
+    projectPlanSchedule: {
+      type: Number,
+      min: 0,
+      required: true,
+      default: 0,
+    },
+    projectRealSchedule: {
+      type: Number,
+      min: 0,
+      required: true,
+      default: 0,
+    },
+    projectPhase: { type: String, trim: true, required: true,},
   },
   {
     timestamps: true,
