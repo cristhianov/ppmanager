@@ -9,6 +9,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const cors = require("cors");
+const { aggregate } = require("./models/User");
 
 //Mongoose Setup
 mongoose
@@ -42,6 +43,8 @@ app.use(
     credentials: true,
   })
 );
+app.use(express.static("public"));
+
 // Enable authentication using session + passport
 app.use(
   session({
@@ -66,5 +69,8 @@ app.use("/api/resourcevis", require("./routes/auth"));
 app.use("/api/pricing", require("./routes/auth"));
 app.use("/api/product", require("./routes/auth"));
 app.use("/api/admin", require("./routes/auth"));
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 module.exports = app;
