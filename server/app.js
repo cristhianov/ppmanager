@@ -12,7 +12,10 @@ const cors = require("cors");
 
 //Mongoose Setup
 mongoose
-  .connect("mongodb://localhost/server", { useNewUrlParser: true })
+  .connect(
+    "mongodb+srv://Cristhian:M1234567@cluster0.bgzqh.mongodb.net/database?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
+  )
   .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
