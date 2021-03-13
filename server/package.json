@@ -7,7 +7,7 @@
     "dev": "DEBUG=server:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www",
     "prearmado": "cd ../client && yarn build",
-    "build": "cp -r ../client/build/ public"
+    "armado": "cp -r ../client/build/ public"
   
   },
   "dependencies": {
