@@ -34,7 +34,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://ppmanager.herokuapp.com/"],
+    origin: [
+      "http://localhost:3000",
+      "https://ppmanager.herokuapp.com/",
+      "https://ppmanager.herokuapp.com/project/create",
+    ],
     credentials: true,
   })
 );
@@ -50,7 +54,17 @@ app.use(
 app.use(flash());
 require("./passport")(app);
 
-app.use("/", require("./routes/index"));
-app.use("/auth", require("./routes/auth"));
+app.use("/api/", require("./routes/index"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/signup", require("./routes/auth"));
+app.use("/api/login", require("./routes/auth"));
+app.use("/api/profile", require("./routes/auth"));
+app.use("/api/project", require("./routes/auth"));
+app.use("/api/resource/:resourceId", require("./routes/auth"));
+app.use("/api/actions", require("./routes/auth"));
+app.use("/api/resourcevis", require("./routes/auth"));
+app.use("/api/pricing", require("./routes/auth"));
+app.use("/api/product", require("./routes/auth"));
+app.use("/api/admin", require("./routes/auth"));
 
 module.exports = app;
